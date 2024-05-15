@@ -1,16 +1,6 @@
-# chat_app
+This is a simple flutter chat app I made using socketIO for Windows
+I used javascript for backend sever
+I used a mySQL database to store user data and messages using XAMPP's phpmyadmin
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+If you have issues running the project, try deleting the cmake cache file
+Make sure to configure your database beforehand, change the mySQL connection parameters and to change the IP address to your own IP address
