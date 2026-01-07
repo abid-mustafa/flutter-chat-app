@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_chat_app/features/auth/domain/entities/user_entity.dart';
 import 'package:flutter_chat_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter_chat_app/features/auth/presentation/bloc/auth_event.dart';
 import 'package:flutter_chat_app/features/auth/presentation/bloc/auth_state.dart';
+import 'package:flutter_chat_app/features/chat/presentation/pages/chat_list.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  final UserEntity user;
+  const HomePage({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,7 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-        body: const SizedBox.shrink(),
+        body: ChatListPage(userId: user.id),
       ),
     );
   }

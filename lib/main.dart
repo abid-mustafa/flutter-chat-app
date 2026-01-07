@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -7,6 +8,8 @@ import 'package:flutter_chat_app/features/auth/data/data_sources/auth_data_sourc
 import 'package:flutter_chat_app/features/auth/data/repositories/auth_repository.dart';
 import 'package:flutter_chat_app/features/auth/data/repositories/user_repository.dart';
 import 'package:flutter_chat_app/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:flutter_chat_app/features/chat/data/repositories/chat_repository.dart';
+import 'package:flutter_chat_app/features/chat/presentation/bloc/chat_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'firebase_options.dart';
@@ -29,9 +32,7 @@ void main() async {
     userRepository: UserRepository(),
   );
 
-  // final messageRepository = MessageRepositoryImpl(
-  //   firestore: FirebaseFirestore.instance,
-  // );
+  final chatRepository = ChatRepository(firestore: FirebaseFirestore.instance);
 
   // Initialize HydratedBloc
   runApp(
@@ -40,12 +41,9 @@ void main() async {
         BlocProvider<AuthBloc>(
           create: (context) => AuthBloc(authRepository: authRepository),
         ),
-        // BlocProvider<GroupBloc>(
-        //   create: (context) => GroupBloc(
-        //     groupRepository: groupRepository,
-        //     joinGroupUseCase: joinGroupUseCase,
-        //   ),
-        // ),
+        BlocProvider<ChatBloc>(
+          create: (context) => ChatBloc(chatRepository: chatRepository),
+        ),
         // BlocProvider<MessagesBloc>(
         //   create: (context) =>
         //       MessagesBloc(messagesRepository: messageRepository),
