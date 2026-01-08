@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 class ChatEntity extends Equatable {
@@ -7,7 +6,7 @@ class ChatEntity extends Equatable {
   final List<String> participantIds;
   final String type; // direct | group
   final String? lastMessage;
-  final Timestamp? lastMessageAt;
+  final DateTime? lastMessageAt;
 
   const ChatEntity({
     required this.id,

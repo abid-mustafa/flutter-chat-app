@@ -17,7 +17,7 @@ class ChatModel extends ChatEntity {
       'participantIds': participantIds,
       'type': type,
       'lastMessage': lastMessage,
-      'lastMessageAt': lastMessageAt?.millisecondsSinceEpoch,
+      'lastMessageAt': lastMessageAt,
     };
   }
 
@@ -28,7 +28,9 @@ class ChatModel extends ChatEntity {
       participantIds: List<String>.from(map['participantIds'] as List),
       type: map['type'] as String,
       lastMessage: map['lastMessage'] as String?,
-      lastMessageAt: map['lastMessageAt'],
+      lastMessageAt: map['lastMessageAt'] != null
+          ? (map['lastMessageAt'] as Timestamp).toDate()
+          : null,
     );
   }
 
@@ -57,7 +59,7 @@ class ChatModel extends ChatEntity {
     List<String>? participantIds,
     String? type,
     String? lastMessage,
-    Timestamp? lastMessageAt,
+    DateTime? lastMessageAt,
   }) {
     return ChatModel(
       id: id,
